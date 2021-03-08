@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  auth:
+    build: auth
+    command: npm run start
+    ports:
+      - "5000:5000"
+    restart: always
+    mongo:
+      container_name: ms_mongo
+      image: mongo:latest
+      ports:
+        - "27017:27017"
+      volumes:
+        - "./mongo/db:/data/db"
+
